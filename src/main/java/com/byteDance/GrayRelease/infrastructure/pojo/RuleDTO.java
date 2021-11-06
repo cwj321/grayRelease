@@ -1,18 +1,18 @@
-package com.byteDance.GrayRelease.common;
+package com.byteDance.GrayRelease.infrastructure.pojo;
 
 
 import lombok.Data;
 
-
-@Data
 /**
- * 检查的规则
+ * 传给service层的实体类
+ * @author cwj
  */
-public class BaseRule {
+@Data
+public class RuleDTO {
     /**
-     * app 唯一标识
+     * 对于每一条rule 的唯一标识
      */
-    String aid;
+    Integer aid;
     /**
      * 平台
      */
@@ -66,5 +66,4 @@ public class BaseRule {
      * 弹窗的更新文本
      */
     String update_tips;
-
 }
