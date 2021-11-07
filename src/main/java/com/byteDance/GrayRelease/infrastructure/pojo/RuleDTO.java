@@ -66,4 +66,60 @@ public class RuleDTO {
      * 弹窗的更新文本
      */
     String update_tips;
+
+    public int getId(){
+        return aid;
+    }
+
+    public String getPlatform(){
+        return platform;
+    } 
+
+    public String getDownload_url(){
+        return download_url;
+    }
+
+    public String getMd5(){
+        return md5;
+    }
+
+    public int getMax_os_api(){
+        return max_os_api;
+    }
+
+    public int getMin_os_api(){
+        return min_os_api;
+    }
+
+    public String getUpdate_version_code(){
+        return update_version_code;
+    }
+
+    public String getMax_update_version_code(){
+        return max_update_version_code;
+    }
+
+    public String getMin_update_version_code(){
+        return min_update_version_code;
+    }
+
+    public String getCpu_arch(){
+        return cpu_arch;
+    }
+
+    public String getChannel(){
+        return channel;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getUpdate_tips(){
+        return update_tips;
+    }
+
+    public String getDevice_id_list(){
+        return device_id_list;
+    }
 }

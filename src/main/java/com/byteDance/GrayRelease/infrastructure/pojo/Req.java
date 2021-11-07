@@ -44,4 +44,28 @@ public class Req {
      * 设备的cpu架构
      */
     Integer cpu_arch;
+
+    public String getDevice_platform(){
+        return device_platform;
+    }
+
+    public String getChannel(){
+        return channel;
+    }
+
+    public int getCpu_arch(){
+        return cpu_arch;
+    }
+
+    public String getUpdate_version_code(){
+        return update_version_code;
+    }
+
+    public int getOs_api(){
+        return os_api;
+    }
+
+    public String getDevice_id(){
+        return device_id;
+    }
 }
