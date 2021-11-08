@@ -1,11 +1,17 @@
 package com.byteDance.GrayRelease.infrastructure.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * 客户端上报参数
  */
+@ToString
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Req {
 
     /**

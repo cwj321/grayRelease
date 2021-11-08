@@ -32,5 +32,4 @@ public class RuleService {
         return Resp.build(rule);
     }
 
-
 }

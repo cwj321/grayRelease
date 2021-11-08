@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配置页</title>
+</head>
+<body>
+
+<form action="/save" method="post">
+    业务的唯一表示ID：<input name="aid"/><br>
+    平台：<input name="platform"/><br>
+    下载链接：<input name="download_url"/><br>
+    包的当前版本号：<input name="update_version_code"/><br>
+    包的MD5：<input name="md5"/><br>
+    设备号白名单列表：<input name="device_id_list"/><br>
+    可升级的最大版本号：<input name="max_update_version_code"/><br>
+    可升级的最小版本号：<input name="min_update_version_code"/><br>
+    支持的最大操作系统版本：<input name="max_os_api"/><br>
+    支持的最小操作系统版本：<input name="min_os_api"/><br>
+    cpu架构 32/64：<input name="cpu_arch"/><br>
+    渠道号：<input name="channel"/><br>
+    弹窗标题：<input name="title"/><br>
+    弹窗的更新文本：<input name="update_tips"/><br>
+    <input type="submit" value="提交"/>
+</form>
+
+</body>
+</html>

@@ -1,12 +1,16 @@
 package com.byteDance.GrayRelease.infrastructure.pojo;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 传给service层的实体类
  * @author cwj
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class RuleDTO {
     /**
