@@ -41,6 +41,7 @@ public class RuleRepository {
         ruleMapper.insertRule(ruleDO);
     }
 
+
     private RuleDTO transfer(RuleDO ruleDO) {
         RuleDTO ruleDTO = new RuleDTO();
         ruleDTO.setAid(ruleDO.getAid());

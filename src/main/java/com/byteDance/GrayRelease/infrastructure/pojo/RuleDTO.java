@@ -126,4 +126,24 @@ public class RuleDTO {
     public String getDevice_id_list(){
         return device_id_list;
     }
+
+
+    public RuleDO convertToDO() {
+        RuleDO ruleDO = new RuleDO();
+        ruleDO.setAid(this.aid);
+        ruleDO.setPlatform(this.platform);
+        ruleDO.setDownload_url(this.download_url);
+        ruleDO.setUpdate_version_code(this.update_version_code);
+        ruleDO.setMd5(this.md5);
+        ruleDO.setDevice_id_list(this.device_id_list);
+        ruleDO.setMax_update_version_code(this.max_update_version_code);
+        ruleDO.setMin_update_version_code(this.min_update_version_code);
+        ruleDO.setMax_os_api(this.max_os_api);
+        ruleDO.setMin_os_api(this.min_os_api);
+        ruleDO.setCpu_arch(this.cpu_arch);
+        ruleDO.setChannel(this.channel);
+        ruleDO.setTitle(this.title);
+        ruleDO.setUpdate_tips(this.update_tips);
+        return ruleDO;
+    }
 }

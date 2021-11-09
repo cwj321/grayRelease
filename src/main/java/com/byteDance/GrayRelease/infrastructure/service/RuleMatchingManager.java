@@ -34,12 +34,9 @@ public class RuleMatchingManager implements InitializingBean {
      * @return
      */
     public RuleDO doGetRule(Req req) {
-        RuleDO ans = rules.stream().filter(rule -> rule.getPlatform().equals(req.getDevice_platform())
-                        && rule.getChannel().equals(req.getChannel())
-                        && rule.getCpu_arch().equals(req.getCpu_arch()))//先对platform,channel,cpu_arch 进行匹配
+        RuleDO ans = rules.stream()
                 .filter(rule -> versionCompare(req.getUpdate_version_code(), rule.getMin_update_version_code()) >= 0
                         && versionCompare(req.getUpdate_version_code(), rule.getMax_update_version_code()) <= 0)
-                // TODO: 2021/10/30 操作系统版本匹配
                 .filter(rule -> rule.getMax_os_api() >= req.getOs_api() &&
                 rule.getMin_os_api() <= req.getOs_api())
                 .filter(rule -> inWhiteList(req, rule)) //白名单匹配
