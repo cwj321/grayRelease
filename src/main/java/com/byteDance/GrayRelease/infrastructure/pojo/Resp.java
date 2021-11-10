@@ -52,7 +52,7 @@ public class Resp {
         this.update_tips = update_tips;
     }
 
-    public static Resp build(RuleDO rule) {
+    public static Resp build(RuleDTO rule) {
         Resp resp = new Resp();
         resp.setDownload_url(rule.getDownload_url());
         resp.setUpdate_version_code(rule.getUpdate_version_code());

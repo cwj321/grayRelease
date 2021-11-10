@@ -2,7 +2,10 @@ package com.byteDance.GrayRelease.infrastructure.service;
 
 import com.byteDance.GrayRelease.infrastructure.pojo.Req;
 import com.byteDance.GrayRelease.infrastructure.pojo.RuleDO;
+import com.byteDance.GrayRelease.infrastructure.pojo.RuleDTO;
+import com.byteDance.GrayRelease.infrastructure.repository.RuleRepository;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +20,11 @@ import java.util.stream.Collectors;
 public class RuleMatchingManager implements InitializingBean {
 
 
-    /**
-     * 记录所有的rule
-     */
-    public List<RuleDO> rules = new ArrayList<>();
+    @Autowired
+    RedisCache redisCache;
+
+    @Autowired
+    RuleRepository ruleRepository;
 
     /**
      * <ruleId,ruleEnv> 记录配置中心更改的rule的状态
@@ -33,8 +37,9 @@ public class RuleMatchingManager implements InitializingBean {
      * @param req
      * @return
      */
-    public RuleDO doGetRule(Req req) {
-        RuleDO ans = rules.stream()
+    public RuleDTO doGetRule(Req req) {
+        List<RuleDTO> rules = ruleRepository.selectList(req);
+        RuleDTO ans = rules.stream()
                 .filter(rule -> versionCompare(req.getUpdate_version_code(), rule.getMin_update_version_code()) >= 0
                         && versionCompare(req.getUpdate_version_code(), rule.getMax_update_version_code()) <= 0)
                 .filter(rule -> rule.getMax_os_api() >= req.getOs_api() &&
@@ -47,7 +52,7 @@ public class RuleMatchingManager implements InitializingBean {
                     return changeRules.get(rule.getAid()).equals("pro");
                 }) // 判断是否是线上环境
                 .sorted((r1, r2) -> versionCompare(r2.getUpdate_version_code(), r1.getUpdate_version_code()))
-                .collect(Collectors.toList()).stream().findFirst().get();
+                .collect(Collectors.toList()).stream().findFirst().orElse(new RuleDTO());
         return ans;
     }
 
@@ -55,7 +60,8 @@ public class RuleMatchingManager implements InitializingBean {
     /**
      * 是否在白名单内
      */
-    public boolean inWhiteList(Req req,RuleDO rule) {
+    public boolean inWhiteList(Req req,RuleDTO rule) {
+        /*
         String rule_device_id_list = rule.getDevice_id_list();
         String req_device_id = req.getDevice_id();
         String[] rule_device_id_list_arr = rule_device_id_list.split(",");
@@ -66,6 +72,8 @@ public class RuleMatchingManager implements InitializingBean {
             }
         }
         return false;
+         */
+        return redisCache.isContains(rule,req);
     }
 
     /**
