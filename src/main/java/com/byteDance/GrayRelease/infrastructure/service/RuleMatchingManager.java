@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 public class RuleMatchingManager implements InitializingBean {
 
 
-    @Autowired
-    RedisCache redisCache;
+//    @Autowired
+//    RedisCache redisCache;
 
     @Autowired
     RuleRepository ruleRepository;
@@ -61,7 +61,6 @@ public class RuleMatchingManager implements InitializingBean {
      * 是否在白名单内
      */
     public boolean inWhiteList(Req req,RuleDTO rule) {
-        /*
         String rule_device_id_list = rule.getDevice_id_list();
         String req_device_id = req.getDevice_id();
         String[] rule_device_id_list_arr = rule_device_id_list.split(",");
@@ -72,8 +71,7 @@ public class RuleMatchingManager implements InitializingBean {
             }
         }
         return false;
-         */
-        return redisCache.isContains(rule,req);
+//        return redisCache.isContains(rule,req);
     }
 
     /**
