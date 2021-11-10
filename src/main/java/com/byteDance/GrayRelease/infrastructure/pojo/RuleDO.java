@@ -73,7 +73,8 @@ public class RuleDO {
      * 弹窗的更新文本
      */
     String update_tips;
-    public int getAid(){
+
+    public Integer getAid(){
         return aid;
     }
 
@@ -89,11 +90,11 @@ public class RuleDO {
         return md5;
     }
 
-    public int getMax_os_api(){
+    public Integer getMax_os_api(){
         return max_os_api;
     }
 
-    public int getMin_os_api(){
+    public Integer getMin_os_api(){
         return min_os_api;
     }
 
@@ -127,5 +128,62 @@ public class RuleDO {
 
     public String getDevice_id_list(){
         return device_id_list;
+    }
+
+    public void setAid(Integer aid){
+        this.aid = aid;
+    }
+
+    public void setPlatform(String platform){
+        this.platform = platform;
+    }
+
+    public void setDownload_url(String download_url){
+        this.download_url = download_url;
+    }
+
+    public void setUpdate_version_code(String update_version_code){
+        this.update_version_code = update_version_code;
+    }
+
+    public void setMd5(String md5){
+        this.md5 = md5;
+    }
+
+    public void setDevice_id_list(String device_id_list){
+        this.device_id_list = device_id_list;
+    }
+
+    public void setMax_update_version_code(String max_update_version_code){
+        this.max_update_version_code = max_update_version_code;
+    }
+
+    public void setMin_update_version_code(String min_update_version_code){
+        this.min_update_version_code = min_update_version_code;
+    }
+    
+
+    public void setMax_os_api(Integer max_os_api){
+        this.max_os_api = max_os_api;
+    }
+
+    public void setMin_os_api(Integer min_os_api){
+        this.min_os_api = min_os_api;
+    }
+
+    public void setCpu_arch(String cpu_arch){
+        this.cpu_arch = cpu_arch;
+    }
+
+    public void setChannel(String channel){
+        this.channel = channel;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setUpdate_tips(String update_tips){
+        this.update_tips = update_tips;
     }
 }
