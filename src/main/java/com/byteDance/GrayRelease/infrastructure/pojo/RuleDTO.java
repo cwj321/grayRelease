@@ -7,7 +7,6 @@ import lombok.Data;
  * 传给service层的实体类
  * @author cwj
  */
-@Data
 public class RuleDTO {
     /**
      * 对于每一条rule 的唯一标识
@@ -72,11 +71,132 @@ public class RuleDTO {
      */
     String env;
 
-    public RuleDTO(Integer aid, String platform, String download_url,
-                   String update_version_code, String md5, String device_id_list,
-                   String max_update_version_code, String min_update_version_code,
-                   Integer max_os_api, Integer min_os_api, String cpu_arch, String channel,
-                   String title, String update_tips) {
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getDownload_url() {
+        return download_url;
+    }
+
+    public void setDownload_url(String download_url) {
+        this.download_url = download_url;
+    }
+
+    public String getUpdate_version_code() {
+        return update_version_code;
+    }
+
+    public void setUpdate_version_code(String update_version_code) {
+        this.update_version_code = update_version_code;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
+    public String getDevice_id_list() {
+        return device_id_list;
+    }
+
+    public void setDevice_id_list(String device_id_list) {
+        this.device_id_list = device_id_list;
+    }
+
+    public String getMax_update_version_code() {
+        return max_update_version_code;
+    }
+
+    public void setMax_update_version_code(String max_update_version_code) {
+        this.max_update_version_code = max_update_version_code;
+    }
+
+    public String getMin_update_version_code() {
+        return min_update_version_code;
+    }
+
+    public void setMin_update_version_code(String min_update_version_code) {
+        this.min_update_version_code = min_update_version_code;
+    }
+
+    public Integer getMax_os_api() {
+        return max_os_api;
+    }
+
+    public void setMax_os_api(Integer max_os_api) {
+        this.max_os_api = max_os_api;
+    }
+
+    public Integer getMin_os_api() {
+        return min_os_api;
+    }
+
+    public void setMin_os_api(Integer min_os_api) {
+        this.min_os_api = min_os_api;
+    }
+
+    public String getCpu_arch() {
+        return cpu_arch;
+    }
+
+    public void setCpu_arch(String cpu_arch) {
+        this.cpu_arch = cpu_arch;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUpdate_tips() {
+        return update_tips;
+    }
+
+    public void setUpdate_tips(String update_tips) {
+        this.update_tips = update_tips;
+    }
+
+    public String getEnv() {
+        return env;
+    }
+
+    public void setEnv(String env) {
+        this.env = env;
+    }
+
+    public RuleDTO(){
+    }
+    
+    public RuleDTO(Integer aid, String platform, String download_url, String update_version_code, String md5, String device_id_list, String max_update_version_code,
+    String min_update_version_code, Integer max_os_api, Integer min_os_api, String cpu_arch, String channel, String title, String update_tips){
         this.aid = aid;
         this.platform = platform;
         this.download_url = download_url;
@@ -92,76 +212,6 @@ public class RuleDTO {
         this.title = title;
         this.update_tips = update_tips;
     }
-
-    public RuleDTO() {
-    }
-
-    public String getEnv() {
-        return env;
-    }
-
-    public void setEnv(String env) {
-        this.env = env;
-    }
-
-
-
-    public int getId(){
-        return aid;
-    }
-
-    public String getPlatform(){
-        return platform;
-    } 
-
-    public String getDownload_url(){
-        return download_url;
-    }
-
-    public String getMd5(){
-        return md5;
-    }
-
-    public int getMax_os_api(){
-        return max_os_api;
-    }
-
-    public int getMin_os_api(){
-        return min_os_api;
-    }
-
-    public String getUpdate_version_code(){
-        return update_version_code;
-    }
-
-    public String getMax_update_version_code(){
-        return max_update_version_code;
-    }
-
-    public String getMin_update_version_code(){
-        return min_update_version_code;
-    }
-
-    public String getCpu_arch(){
-        return cpu_arch;
-    }
-
-    public String getChannel(){
-        return channel;
-    }
-
-    public String getTitle(){
-        return title;
-    }
-
-    public String getUpdate_tips(){
-        return update_tips;
-    }
-
-    public String getDevice_id_list(){
-        return device_id_list;
-    }
-
 
     public RuleDO convertToDO() {
         RuleDO ruleDO = new RuleDO();

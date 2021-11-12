@@ -8,8 +8,6 @@ import lombok.Setter;
  * 数据库DO对象
  * @author cwj
  */
-@Getter
-@Setter
 public class RuleDO {
 
     /**
@@ -73,64 +71,136 @@ public class RuleDO {
      * 弹窗的更新文本
      */
     String update_tips;
-
     /**
      * 环境: 开发or生产
      */
     String env;
-    public int getAid(){
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getAid() {
         return aid;
     }
 
-    public String getPlatform(){
-        return platform;
-    } 
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
 
-    public String getDownload_url(){
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getDownload_url() {
         return download_url;
     }
 
-    public String getMd5(){
-        return md5;
+    public void setDownload_url(String download_url) {
+        this.download_url = download_url;
     }
 
-    public int getMax_os_api(){
-        return max_os_api;
-    }
-
-    public int getMin_os_api(){
-        return min_os_api;
-    }
-
-    public String getUpdate_version_code(){
+    public String getUpdate_version_code() {
         return update_version_code;
     }
 
-    public String getMax_update_version_code(){
+    public void setUpdate_version_code(String update_version_code) {
+        this.update_version_code = update_version_code;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
+    public String getDevice_id_list() {
+        return device_id_list;
+    }
+
+    public void setDevice_id_list(String device_id_list) {
+        this.device_id_list = device_id_list;
+    }
+
+    public String getMax_update_version_code() {
         return max_update_version_code;
     }
 
-    public String getMin_update_version_code(){
+    public void setMax_update_version_code(String max_update_version_code) {
+        this.max_update_version_code = max_update_version_code;
+    }
+
+    public String getMin_update_version_code() {
         return min_update_version_code;
     }
 
-    public String getCpu_arch(){
+    public void setMin_update_version_code(String min_update_version_code) {
+        this.min_update_version_code = min_update_version_code;
+    }
+
+    public Integer getMax_os_api() {
+        return max_os_api;
+    }
+
+    public void setMax_os_api(Integer max_os_api) {
+        this.max_os_api = max_os_api;
+    }
+
+    public Integer getMin_os_api() {
+        return min_os_api;
+    }
+
+    public void setMin_os_api(Integer min_os_api) {
+        this.min_os_api = min_os_api;
+    }
+
+    public String getCpu_arch() {
         return cpu_arch;
     }
 
-    public String getChannel(){
+    public void setCpu_arch(String cpu_arch) {
+        this.cpu_arch = cpu_arch;
+    }
+
+    public String getChannel() {
         return channel;
     }
 
-    public String getTitle(){
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getUpdate_tips(){
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUpdate_tips() {
         return update_tips;
     }
 
-    public String getDevice_id_list(){
-        return device_id_list;
+    public void setUpdate_tips(String update_tips) {
+        this.update_tips = update_tips;
+    }
+
+    public String getEnv() {
+        return env;
+    }
+
+    public void setEnv(String env) {
+        this.env = env;
     }
 }

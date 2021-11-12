@@ -51,6 +51,22 @@ public class Req {
      */
     Integer cpu_arch;
 
+    public Req(){
+
+    }
+    
+    public Req(String version, String device_platform, String device_id, Integer os_api, String channel, String version_code, String update_version_code, Integer aid, Integer cpu_arch){
+        this.version = version;
+        this.device_platform = device_platform;
+        this.device_id = device_id;
+        this.os_api = os_api;
+        this.channel = channel;
+        this.version_code = version_code;
+        this.update_version_code = update_version_code;
+        this.aid = aid;
+        this.cpu_arch = cpu_arch;
+    }
+
     public String getDevice_platform(){
         return device_platform;
     }
@@ -59,7 +75,7 @@ public class Req {
         return channel;
     }
 
-    public int getCpu_arch(){
+    public Integer getCpu_arch(){
         return cpu_arch;
     }
 
@@ -67,11 +83,28 @@ public class Req {
         return update_version_code;
     }
 
-    public int getOs_api(){
+    public Integer getOs_api(){
         return os_api;
     }
 
     public String getDevice_id(){
         return device_id;
     }
+
+    public void setAid(Integer aid){
+        this.aid = aid;
+    }
+
+    public void setChannel(String channel){
+        this.channel = channel;
+    }
+
+    public void setCpu_arch(Integer cpu_arch){
+        this.cpu_arch = cpu_arch;
+    }
+
+    public void setDevice_platform(String device_platform){
+        this.device_platform = device_platform;
+    }
+    
 }
