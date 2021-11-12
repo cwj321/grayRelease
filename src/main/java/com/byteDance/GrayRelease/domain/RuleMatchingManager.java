@@ -29,7 +29,6 @@ public class RuleMatchingManager {
      * @return
      */
     public RuleDTO doGetRule(Req req) {
-        System.out.println(req);
         List<RuleDTO> rules = ruleRepository.selectList(req);
         RuleDTO ans = rules.stream()
                 .filter(rule -> versionCompare(req.getUpdate_version_code(), rule.getMin_update_version_code()) >= 0

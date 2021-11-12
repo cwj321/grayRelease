@@ -1,29 +1,14 @@
 # GrayRelease
 
 #### Description
-版本升级
+版本升级项目，对客户端请求进行数据库的匹配并返回合适的升级包连接
 
 #### Software Architecture
-Software architecture description
+![img.png](img.png)
 
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### Contribution
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
 
 
 #### Gitee Feature

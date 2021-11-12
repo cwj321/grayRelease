@@ -28,6 +28,10 @@ public class RedisCache {
      * @return
      */
     public boolean isContains(RuleDTO ruleDTO, Req req) {
+        Boolean hashKey = redisTemplate.hasKey(getCacheKey(ruleDTO));
+        if (!hashKey) {
+            return false;
+        }
         return Boolean.TRUE.equals(redisTemplate.opsForSet().isMember(getCacheKey(ruleDTO), req.getDevice_id()));
     }
 
