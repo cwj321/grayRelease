@@ -37,21 +37,6 @@
         当apollo配置中心删除某条规则后,即视为此规则为上限(env 改为 pro)
     
         
-###代码目录说明
-├─com.byteDance.GrayRelease
-│    │
-│    ├─ adaptor api接口层
-│    │
-│    │
-│    ├─ domain 领域业务层
-│    │
-│    │
-│    ├─ infrastructure 基础设施层 用于持久化和redis和apollo的配置
-│    │
-│    │
-│    ├─ GrayReleaseApplication 启动类
-│
-
 ### 贡献人员
     - 陈文杰
     - 鲁博
