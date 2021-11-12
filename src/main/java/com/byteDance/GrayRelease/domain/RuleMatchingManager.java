@@ -1,35 +1,26 @@
-package com.byteDance.GrayRelease.infrastructure.service;
+package com.byteDance.GrayRelease.domain;
 
 import com.byteDance.GrayRelease.infrastructure.pojo.Req;
-import com.byteDance.GrayRelease.infrastructure.pojo.RuleDO;
 import com.byteDance.GrayRelease.infrastructure.pojo.RuleDTO;
 import com.byteDance.GrayRelease.infrastructure.repository.RuleRepository;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
  * 用于匹配规则
  */
 @Component
-public class RuleMatchingManager implements InitializingBean {
+public class RuleMatchingManager {
 
 
-//    @Autowired
-//    RedisCache redisCache;
+    @Autowired
+    RedisCache redisCache;
 
     @Autowired
     RuleRepository ruleRepository;
-
-    /**
-     * <ruleId,ruleEnv> 记录配置中心更改的rule的状态
-     */
-    public Map<String,String> changeRules = new ConcurrentHashMap<>();
 
 
     /**
@@ -38,6 +29,7 @@ public class RuleMatchingManager implements InitializingBean {
      * @return
      */
     public RuleDTO doGetRule(Req req) {
+        System.out.println(req);
         List<RuleDTO> rules = ruleRepository.selectList(req);
         RuleDTO ans = rules.stream()
                 .filter(rule -> versionCompare(req.getUpdate_version_code(), rule.getMin_update_version_code()) >= 0
@@ -45,11 +37,8 @@ public class RuleMatchingManager implements InitializingBean {
                 .filter(rule -> rule.getMax_os_api() >= req.getOs_api() &&
                 rule.getMin_os_api() <= req.getOs_api())
                 .filter(rule -> inWhiteList(req, rule)) //白名单匹配
-                .filter(rule -> {
-                    if (!changeRules.containsKey(rule.getAid())) {
-                        return true;
-                    }
-                    return changeRules.get(rule.getAid()).equals("pro");
+                .filter(ruleDTO -> {
+                    return ruleDTO.getEnv().equals("pro");
                 }) // 判断是否是线上环境
                 .sorted((r1, r2) -> versionCompare(r2.getUpdate_version_code(), r1.getUpdate_version_code()))
                 .collect(Collectors.toList()).stream().findFirst().orElse(new RuleDTO());
@@ -61,9 +50,14 @@ public class RuleMatchingManager implements InitializingBean {
      * 是否在白名单内
      */
     public boolean inWhiteList(Req req,RuleDTO rule) {
+
+        if(redisCache.isContains(rule,req)) {
+            return true;
+        }
         String rule_device_id_list = rule.getDevice_id_list();
         String req_device_id = req.getDevice_id();
         String[] rule_device_id_list_arr = rule_device_id_list.split(",");
+        redisCache.add(rule_device_id_list_arr,rule); //将白名单加入到缓存set中,用于下一次的o(1)判断
         int len = rule_device_id_list_arr.length;
         for(int i = 0; i<len; ++i){
             if(req_device_id.equals(rule_device_id_list_arr[i])){
@@ -71,7 +65,6 @@ public class RuleMatchingManager implements InitializingBean {
             }
         }
         return false;
-//        return redisCache.isContains(rule,req);
     }
 
     /**
@@ -95,11 +88,6 @@ public class RuleMatchingManager implements InitializingBean {
             j++;
         }
         return 0;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        // TODO: 2021/10/30  向list中加入数据 并且设置所有的rule默认为线上环境
     }
 }
 

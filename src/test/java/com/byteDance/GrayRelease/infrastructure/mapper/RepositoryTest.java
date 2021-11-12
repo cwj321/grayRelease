@@ -48,5 +48,10 @@ public class RepositoryTest {
         ruleRepository.insertRule(ruleDO);
     }
 
+    @Test
+    public void updateEnv() {
+        ruleRepository.updateEnv(1L,"dev");
+    }
+
 
 }

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * rule操作mapper
- * @author cwj
+ * @author 陈文杰
  */
 @Component
 public class RuleRepository {
@@ -41,6 +41,10 @@ public class RuleRepository {
         ruleMapper.insertRule(ruleDO);
     }
 
+    public void updateEnv(Long id,String env) {
+        ruleMapper.updateEnv(id,env);
+    }
+
 
     private RuleDTO transfer(RuleDO ruleDO) {
         RuleDTO ruleDTO = new RuleDTO();
@@ -48,6 +52,8 @@ public class RuleRepository {
         ruleDTO.setPlatform(ruleDO.getPlatform());
         ruleDTO.setDownload_url(ruleDO.getDownload_url());
         ruleDTO.setUpdate_version_code(ruleDO.getUpdate_version_code());
+        ruleDTO.setMax_update_version_code(ruleDO.getMax_update_version_code());
+        ruleDTO.setMin_update_version_code(ruleDO.getMin_update_version_code());
         ruleDTO.setMd5(ruleDO.getMd5());
         ruleDTO.setDevice_id_list(ruleDO.getDevice_id_list());
         ruleDTO.setMax_os_api(ruleDO.getMax_os_api());
@@ -56,6 +62,7 @@ public class RuleRepository {
         ruleDTO.setChannel(ruleDO.getChannel());
         ruleDTO.setTitle(ruleDO.getTitle());
         ruleDTO.setUpdate_tips(ruleDO.getUpdate_tips());
+        ruleDTO.setEnv(ruleDO.getEnv());
         return ruleDTO;
     }
 }

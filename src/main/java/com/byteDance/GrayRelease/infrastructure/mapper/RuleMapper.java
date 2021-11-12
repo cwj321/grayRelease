@@ -20,4 +20,6 @@ public interface RuleMapper {
 
     void insertRule(RuleDO ruleDO);
 
+    int updateEnv(Long id,String env);
+
 }

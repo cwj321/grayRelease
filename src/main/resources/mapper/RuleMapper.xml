@@ -19,6 +19,7 @@
         <result column="channel" property="channel"/>
         <result column="title" property="title"/>
         <result column="update_tips" property="update_tips"/>
+        <result column="env" property="env"/>
     </resultMap>
     <select id="selectList" parameterType="com.byteDance.GrayRelease.infrastructure.pojo.Req" resultMap="RuleMap">
         select * from rule r where r.platform = #{device_platform} and r.channel = #{channel}
@@ -116,4 +117,9 @@
             </if>
         </trim>
     </insert>
+    
+    
+    <update id="updateEnv">
+        update rule r set r.env = #{env} where id = #{id}
+    </update>
 </mapper>

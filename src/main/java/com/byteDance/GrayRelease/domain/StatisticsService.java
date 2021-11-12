@@ -1,4 +1,4 @@
-package com.byteDance.GrayRelease.infrastructure.service;
+package com.byteDance.GrayRelease.domain;
 
 import com.byteDance.GrayRelease.infrastructure.pojo.Req;
 import com.byteDance.GrayRelease.infrastructure.pojo.RuleDO;

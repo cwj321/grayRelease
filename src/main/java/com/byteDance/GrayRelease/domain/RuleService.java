@@ -1,7 +1,6 @@
-package com.byteDance.GrayRelease.infrastructure.service;
+package com.byteDance.GrayRelease.domain;
 
 import com.byteDance.GrayRelease.infrastructure.pojo.Req;
-import com.byteDance.GrayRelease.infrastructure.pojo.RuleDO;
 import com.byteDance.GrayRelease.infrastructure.pojo.Resp;
 import com.byteDance.GrayRelease.infrastructure.pojo.RuleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ public class RuleService {
      * @return
      */
     public Resp getSingleRule(Req req) {
-        // TODO: 2021/10/30 使用缓存? 
         RuleDTO rule = ruleMatchingManager.doGetRule(req);
         if (rule == null) {
             return Resp.build();

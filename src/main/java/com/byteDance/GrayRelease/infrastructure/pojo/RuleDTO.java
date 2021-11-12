@@ -1,16 +1,12 @@
 package com.byteDance.GrayRelease.infrastructure.pojo;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 传给service层的实体类
  * @author cwj
  */
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class RuleDTO {
     /**
@@ -70,6 +66,45 @@ public class RuleDTO {
      * 弹窗的更新文本
      */
     String update_tips;
+
+    /**
+     * 环境：pro or dev 数据库默认为pro,只有配置中心更改后才改为pro
+     */
+    String env;
+
+    public RuleDTO(Integer aid, String platform, String download_url,
+                   String update_version_code, String md5, String device_id_list,
+                   String max_update_version_code, String min_update_version_code,
+                   Integer max_os_api, Integer min_os_api, String cpu_arch, String channel,
+                   String title, String update_tips) {
+        this.aid = aid;
+        this.platform = platform;
+        this.download_url = download_url;
+        this.update_version_code = update_version_code;
+        this.md5 = md5;
+        this.device_id_list = device_id_list;
+        this.max_update_version_code = max_update_version_code;
+        this.min_update_version_code = min_update_version_code;
+        this.max_os_api = max_os_api;
+        this.min_os_api = min_os_api;
+        this.cpu_arch = cpu_arch;
+        this.channel = channel;
+        this.title = title;
+        this.update_tips = update_tips;
+    }
+
+    public RuleDTO() {
+    }
+
+    public String getEnv() {
+        return env;
+    }
+
+    public void setEnv(String env) {
+        this.env = env;
+    }
+
+
 
     public int getId(){
         return aid;
@@ -144,6 +179,7 @@ public class RuleDTO {
         ruleDO.setChannel(this.channel);
         ruleDO.setTitle(this.title);
         ruleDO.setUpdate_tips(this.update_tips);
+        ruleDO.setEnv(this.env);
         return ruleDO;
     }
 }

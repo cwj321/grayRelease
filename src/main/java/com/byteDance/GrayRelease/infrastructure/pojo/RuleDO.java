@@ -73,6 +73,11 @@ public class RuleDO {
      * 弹窗的更新文本
      */
     String update_tips;
+
+    /**
+     * 环境: 开发or生产
+     */
+    String env;
     public int getAid(){
         return aid;
     }

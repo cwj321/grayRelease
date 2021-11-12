@@ -1,8 +1,8 @@
-package com.byteDance.GrayRelease.infrastructure.controller;
+package com.byteDance.GrayRelease.adaptor;
 
 
 import com.byteDance.GrayRelease.infrastructure.pojo.RuleDTO;
-import com.byteDance.GrayRelease.infrastructure.service.ConfigurationService;
+import com.byteDance.GrayRelease.domain.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
